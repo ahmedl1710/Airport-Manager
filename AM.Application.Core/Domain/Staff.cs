@@ -18,6 +18,11 @@ namespace AM.Application.Core.Domain
             System.Console.WriteLine("iam a staff");
         }
 
-       
+        public override string? ToString()
+        {
+            String s =base.ToString();
+            s += "\n Employement Date " + EmployementDate + "Function" + "Salary" + Salary;
+            return s;
+        }
     }
 }

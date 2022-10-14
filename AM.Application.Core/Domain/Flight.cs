@@ -19,7 +19,7 @@ namespace AM.Application.Core.Domain
 
         public override string? ToString()
         {
-            return "FlightDate " + FlightDate + "destination" + Destination + "depart" + Departure + "EffectiveArrival" + EffectiveArrival + "EstimatedDuration" + EstimatedDuration    ;
+            return "\t FlightDate " + FlightDate + "destination" + Destination + "depart" + Departure + "EffectiveArrival" + EffectiveArrival + "EstimatedDuration" + EstimatedDuration+"\n";
         }
     }
     

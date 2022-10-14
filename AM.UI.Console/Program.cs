@@ -22,7 +22,7 @@ namespace AM.UI.Console
             */
             ServiceFlight sf = new ServiceFlight();
                 List<Flight> listFlights = new List<Flight>();
-            sf.Fights = TestData.listFlights;
+            sf.Flights = TestData.listFlights;
             /*
              * System.Console.WriteLine("destination plz");
             String des = System.Console.ReadLine(); 

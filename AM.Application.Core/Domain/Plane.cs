@@ -9,8 +9,6 @@ namespace AM.Application.Core.Domain
     public class Plane
     {
 
-     
-
         public int Capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
         public int planeId { get; set; }
@@ -19,7 +17,13 @@ namespace AM.Application.Core.Domain
 
         public override string? ToString()
         {
-            return base.ToString();
+            String S= "plane ID"+ planeId+ "Capacity"+ Capacity+ "Plane Type"+ PlaneType + "Manufacture Date"+ ManufactureDate;
+            foreach (Flight f in flights)
+            {
+                S += f.ToString();
+            }
+            
+            return S; 
         }
     }
     public enum PlaneType { Boing, Airbus}

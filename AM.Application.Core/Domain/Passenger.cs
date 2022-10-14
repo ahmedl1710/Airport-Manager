@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,6 +42,18 @@ namespace AM.Application.Core.Domain
             System.Console.WriteLine("iam a passenger");
         }
 
+
+        
+        public override String? ToString()
+        {
+           String S="First Name" + FirstName + "Last Name" + LastName + " Birth Date" + BirthDate + "Passport Number" + PassportNumber + "Email Address" + EmailAddress + "Tel Number" + TelNumber+"\n";
+            foreach(Flight f in flights)
+            {
+                S+=f.ToString();
+            }
+            return S;
+
+        }
     }
 }
 

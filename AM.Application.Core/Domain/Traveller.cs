@@ -17,6 +17,11 @@ namespace AM.Application.Core.Domain
             System.Console.WriteLine("iam a traveller");
         }
 
-      
+        public override string? ToString()
+        {
+            String s = base.ToString();
+            s += "\n Health Information  " + HealthInformation + "Nationality" + Nationality;
+            return s;
+        }
     }
 }
