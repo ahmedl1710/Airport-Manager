@@ -10,12 +10,14 @@ namespace AM.Application.Core.Interfaces
     internal interface IServiceFlight
     {
 
-        public List<DateTime> GetFlightDates(String destination);
+        public List<Flight> GetFlightDates(String destination);
 
         public void GetFlights(String filterType, String value);
         public int ProgrammedFlightNumber(DateTime startDate);
         public void ShowFlightDetails(Plane p);
         public int ProgrammedFlightNumber2(DateTime date);
         public Double DurationAverage(String destination);
-    }
+        public List<Flight> OrderedDurationFLights();
+        public List<Traveller> SeniorTravellers(Flight flight);
+        public List<Flight> DestinationGroupedFlights();
 }

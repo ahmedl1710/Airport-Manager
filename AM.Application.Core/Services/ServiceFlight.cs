@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AM.Application.Core.Services
@@ -110,6 +111,31 @@ namespace AM.Application.Core.Services
         {
             var querry = Flights.Where(f => f.Destination == destination).Select(f => f.EstimatedDuration).Average();
             return querry;
+        }
+
+        public List<Flight> OrderedDurationFLights()
+        {
+            var querry =Flights.OrderByDescending(f => f.EstimatedDuration).ToList();
+            return querry;
+        }
+        public List<Traveller> SeniorTravellers(Flight flight)
+        {
+            var querry = flight.Passengers.OfType<Traveller>().OrderBy(f => f.BirthDate);
+            return querry.Take(3).ToList();
+       
+        }
+        public List<Flight> DestinationGroupedFlights()
+        {
+            var querry = Flights.OrderBy(f => f.Destination);
+            foreach (var fligh in querry)
+            {
+                Console.WriteLine("Destination  " + fligh.Destination);
+                foreach (var fl in fligh)
+                {
+                    Console.WriteLine("Decollage : " + fl.FlightDate);
+                }
+            }
+            return querry.ToList();
         }
 
 
