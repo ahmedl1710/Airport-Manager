@@ -124,18 +124,18 @@ namespace AM.Application.Core.Services
             return querry.Take(3).ToList();
        
         }
-        public List<Flight> DestinationGroupedFlights()
+        public void DestinationGroupedFlights()
         {
-            var querry = Flights.OrderBy(f => f.Destination);
+            var querry = Flights.GroupBy(f => f.Destination);
             foreach (var fligh in querry)
             {
-                Console.WriteLine("Destination  " + fligh.Destination);
+                Console.WriteLine("Destination  " + fligh.Key);
                 foreach (var fl in fligh)
                 {
                     Console.WriteLine("Decollage : " + fl.FlightDate);
                 }
             }
-            return querry.ToList();
+            
         }
 
 
