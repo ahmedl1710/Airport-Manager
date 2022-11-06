@@ -12,7 +12,7 @@ namespace AM.Application.Core.Domain
         [Range(0,int.MaxValue)]
         public int Capacity { get; set; }
         public DateTime ManufactureDate { get; set; }
-        [Key]   
+           
         public int planeId { get; set; }
         public PlaneType PlaneType { get; set; }
         public virtual ICollection<Flight> flights { get; set; }
