@@ -18,6 +18,7 @@ namespace AM.Application.Core.Domain
         public DateTime EffectiveArrival { get; set; }
         public int EstimatedDuration { get; set; }
         public virtual ICollection<Passenger> Passengers { get; set; }
+        public virtual ICollection<Ticket> tickets { get; set; }
         
         public virtual Plane Plane { get; set; }
 

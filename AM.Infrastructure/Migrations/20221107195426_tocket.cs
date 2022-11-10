@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AM.Infrastructure.Migrations
 {
-    public partial class fluentApi2 : Migration
+    public partial class tocket : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,10 +32,10 @@ namespace AM.Infrastructure.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    FirstName = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    passFirstName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    passLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TelNumber = table.Column<int>(type: "int", nullable: false),
-                    Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsTraveller = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmployementDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Function = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Salary = table.Column<float>(type: "real", nullable: true),
@@ -93,16 +93,52 @@ namespace AM.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Ticket",
+                columns: table => new
+                {
+                    NumTicket = table.Column<int>(type: "int", nullable: false),
+                    PassengerFk = table.Column<int>(type: "int", nullable: false),
+                    FlightFk = table.Column<int>(type: "int", nullable: false),
+                    prix = table.Column<float>(type: "real", nullable: false),
+                    Siege = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    VIP = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Ticket", x => new { x.PassengerFk, x.FlightFk, x.NumTicket });
+                    table.ForeignKey(
+                        name: "FK_Ticket_Flight_FlightFk",
+                        column: x => x.FlightFk,
+                        principalTable: "Flight",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Ticket_Passenger_PassengerFk",
+                        column: x => x.PassengerFk,
+                        principalTable: "Passenger",
+                        principalColumn: "PassportNumber",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_reservation_flightsId",
                 table: "reservation",
                 column: "flightsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ticket_FlightFk",
+                table: "Ticket",
+                column: "FlightFk");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "reservation");
+
+            migrationBuilder.DropTable(
+                name: "Ticket");
 
             migrationBuilder.DropTable(
                 name: "Flight");

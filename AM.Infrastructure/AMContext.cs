@@ -10,18 +10,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace AM.Infrastructure
 {
-    internal class AMContext : DbContext
+    public class AMContext : DbContext
     {
 
-        DbSet<Plane> Plane { get; set; }
-        DbSet<Flight> Flight { get; set; }
-        DbSet<Passenger> Passenger { get; set; }
-        DbSet<Staff> Staff { get; set; }
-        DbSet<Traveller> Traveller { get; set; }
+        public DbSet<Plane> Plane { get; set; }
+        public DbSet<Flight> Flight { get; set; }
+        public DbSet<Ticket> Passenger { get; set; }
+        public DbSet<Staff> Staff { get; set; }
+        public DbSet<Traveller> Traveller { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.ApplyConfiguration(new PlaneConfiguration());
             modelbuilder.ApplyConfiguration(new FlightConfiguration());
+            modelbuilder.ApplyConfiguration(new PassengerConfiguration());  
+            modelbuilder.ApplyConfiguration(new TicketConfiguration());
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
