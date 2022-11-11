@@ -28,5 +28,5 @@ namespace AM.Application.Core.Domain
             return S; 
         }
     }
-    public enum PlaneType { Boing, Airbus}
+    public enum PlaneType { Boing=1, Airbus=2}
 }

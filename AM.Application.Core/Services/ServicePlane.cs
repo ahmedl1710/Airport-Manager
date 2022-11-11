@@ -9,14 +9,47 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServicePlane : IServicePlane
+    public class ServicePlane : Service<Plane>, IServicePlane
     {
-        private IUnitOfWork unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
+        public ServicePlane (IUnitOfWork unitofwork) : base(unitofwork)
+        {
+            _unitOfWork = unitofwork;
+        }
+
+        public IEnumerable<Plane> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Plane GetById(params object[] keyValues)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*private IUnitOfWork unitOfWork;
         private IGenericRepository<Plane> genericRepository;
         /*public ServicePlane(IGenericRepository<Plane> genericRepository)
         {
             this.genericRepository = genericRepository;
-        }*/
+        }
         public ServicePlane(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
@@ -40,6 +73,6 @@ namespace AM.ApplicationCore.Services
         public void Update(Plane plane)
         {
             unitOfWork.Repository<Plane>().Update(plane);
-        }
+        }*/
     }
 }

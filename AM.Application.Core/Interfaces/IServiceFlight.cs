@@ -1,4 +1,5 @@
 ﻿using AM.Application.Core.Domain;
+using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace AM.Application.Core.Interfaces
 {
-    internal interface IServiceFlight
+    public interface IServiceFlight: IGenericRepository<Flight>   
     {
 
-        public List<Flight> GetFlightDates(String destination);
+       /* public List<Flight> GetFlightDates(String destination);
 
         public void GetFlights(String filterType, String value);
         public int ProgrammedFlightNumber(DateTime startDate);
@@ -20,6 +21,6 @@ namespace AM.Application.Core.Interfaces
         public List<Flight> OrderedDurationFLights();
         public List<Traveller> SeniorTravellers(Flight flight);
         public void DestinationGroupedFlights();
-
+       */
     }
 }

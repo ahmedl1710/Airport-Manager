@@ -45,7 +45,7 @@ namespace AM.UI.Console
               context.SaveChanges();
 
               */
-            ServiceFlight sf = new ServiceFlight();
+            /*ServiceFlight sf = new ServiceFlight();
 
             sf.Flights = TestData.listFlights;
 
@@ -57,11 +57,22 @@ namespace AM.UI.Console
 
             /*GenericRepository<Plane> genericRepository = new GenericRepository<Plane>(context);
             ServicePlane sp=new ServicePlane(genericRepository);*/
+            /* UnitOfWork ui = new UnitOfWork(context, typeof(GenericRepository<>));
+             ServicePlane sp = new ServicePlane(ui);
+             sp.Add(TestData.BoingPlane);
+             ui.Save();
+             System.Console.WriteLine(context.Plane.First());
+            */
+
+
+            AMContext context = new AMContext();
             UnitOfWork ui = new UnitOfWork(context, typeof(GenericRepository<>));
             ServicePlane sp = new ServicePlane(ui);
-            sp.Add(TestData.BoingPlane);
-            ui.Save();
-            System.Console.WriteLine(context.Plane.First());
+          //  sp.Add(TestData.Airbusplane);
+            //sp.Add(TestData.BoingPlane);
+            sp.Delete(TestData.Airbusplane);
+            sp.Delete(TestData.Airbusplane);
+
 
 
 
