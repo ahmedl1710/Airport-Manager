@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AM.Application.Core.Interfaces
 {
-    public interface IServiceTicket : IGenericRepository<Ticket>
+    public interface IServiceTicket : IService<Ticket>
     {
     }
 }

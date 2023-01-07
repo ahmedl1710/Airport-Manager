@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace AM.Application.Core.Services
 {
     
-    public class ServiceTicket : Service<Ticket>, IServiceTicket
+    public class ServiceTicket : ApplicationCore.Services.Service<Ticket>, IServiceTicket
     {
-        private readonly IUnitOfWork _unitOfWork;
+        public List<Ticket> Tickets => GetAll().ToList();
         public ServiceTicket(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-            _unitOfWork = unitOfWork;
+            
         }
 
         public IEnumerable<Ticket> GetAll()

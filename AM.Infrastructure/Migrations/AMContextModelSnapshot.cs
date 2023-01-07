@@ -50,7 +50,7 @@ namespace AM.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Flight");
+                    b.ToTable("Flights");
                 });
 
             modelBuilder.Entity("AM.Application.Core.Domain.Passenger", b =>
@@ -78,7 +78,7 @@ namespace AM.Infrastructure.Migrations
 
                     b.HasKey("PassportNumber");
 
-                    b.ToTable("Passenger");
+                    b.ToTable("Passengers");
 
                     b.HasDiscriminator<string>("IsTraveller").HasValue("0");
                 });
@@ -131,7 +131,7 @@ namespace AM.Infrastructure.Migrations
 
                     b.HasIndex("FlightFk");
 
-                    b.ToTable("Ticket");
+                    b.ToTable("Tickets");
                 });
 
             modelBuilder.Entity("FlightPassenger", b =>
@@ -211,7 +211,7 @@ namespace AM.Infrastructure.Migrations
 
                             b1.HasKey("PassengerPassportNumber");
 
-                            b1.ToTable("Passenger");
+                            b1.ToTable("Passengers");
 
                             b1.WithOwner()
                                 .HasForeignKey("PassengerPassportNumber");

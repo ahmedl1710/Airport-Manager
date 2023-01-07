@@ -13,12 +13,12 @@ namespace AM.Infrastructure
     public class AMContext : DbContext
     {
 
-        public DbSet<Plane> Plane { get; set; }
-        public DbSet<Flight> Flight { get; set; }
-        public DbSet<Ticket> Passenger { get; set; }
-        public DbSet<Staff> Staff { get; set; }
-        public DbSet<Traveller> Traveller { get; set; }
-        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<Plane> Planes { get; set; }
+        public DbSet<Flight> Flights { get; set; }
+        public DbSet<Passenger> Passengers { get; set; }
+        public DbSet<Staff> Staffs{ get; set; }
+        public DbSet<Traveller> Travellers { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             modelbuilder.ApplyConfiguration(new PlaneConfiguration());

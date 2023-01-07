@@ -65,14 +65,7 @@ namespace AM.UI.Console
             */
 
 
-            AMContext context = new AMContext();
-            UnitOfWork ui = new UnitOfWork(context, typeof(GenericRepository<>));
-            ServicePlane sp = new ServicePlane(ui);
-          //  sp.Add(TestData.Airbusplane);
-            //sp.Add(TestData.BoingPlane);
-            sp.Delete(TestData.Airbusplane);
-            sp.Delete(TestData.Airbusplane);
-
+            
 
 
 

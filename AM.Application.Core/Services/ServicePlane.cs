@@ -11,10 +11,10 @@ namespace AM.ApplicationCore.Services
 {
     public class ServicePlane : Service<Plane>, IServicePlane
     {
-        private readonly IUnitOfWork _unitOfWork;
+        public List<Plane> Planes => GetAll().ToList();
         public ServicePlane (IUnitOfWork unitofwork) : base(unitofwork)
         {
-            _unitOfWork = unitofwork;
+           
         }
 
         public IEnumerable<Plane> GetAll()

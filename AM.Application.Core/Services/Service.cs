@@ -8,61 +8,72 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class Service<T> : IService<T> where T : class
+    public class Service<TEntity> : IService<TEntity> where TEntity : class
     {
-        private readonly IGenericRepository<T> _repository;
+
+        private readonly IGenericRepository<TEntity> _repository;
         private readonly IUnitOfWork _unitOfWork;
         public Service(IUnitOfWork unitOfWork)
         {
-            this._repository = unitOfWork.Repository<T>();
+            this._repository = unitOfWork.Repository<TEntity>();
             this._unitOfWork = unitOfWork;
         }
-        public virtual void Add(T entity)
+        public virtual void Add(TEntity entity)
         {
             _repository.Add(entity);
-
-
         }
-        public virtual void Update(T entity)
+        public virtual void Update(TEntity entity)
         {
             _repository.Update(entity);
         }
-        public virtual void Delete(T entity)
+        public virtual void Delete(TEntity entity)
         {
             _repository.Delete(entity);
         }
-        public virtual void Delete(Expression<Func<T, bool>> where)
+        public virtual void Delete(Expression<Func<TEntity, bool>> where)
         {
-           _repository.Delete(where);
+            _repository.Delete(where);
         }
-        public virtual T GetById(object id)
+        public virtual TEntity GetById(params object[] id)
         {
             return _repository.GetById(id);
         }
-        public virtual T GetById(string id)
-        {
-            return _repository.GetById(GetById(id));
-        }
-        public virtual IEnumerable<T> GetMany(Expression<Func<T, bool>> filter = null)
+
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _repository.GetAll();
         }
-        public virtual T Get(Expression<Func<T, bool>> where)
+        public virtual IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> filter)
         {
-           return _repository.Get(where);
+            return _repository.GetMany(filter);
         }
+
+        public virtual TEntity Get(Expression<Func<TEntity, bool>> where)
+        {
+            return _repository.Get(where);
+        }
+
         public void Commit()
         {
             try
             {
-                _unitOfWork.Save(); //unit of work sert a sauvgarder les changement dans la base de donnees
-
+                _unitOfWork.Save();
             }
             catch (Exception ex)
             {
                 throw;
             }
         }
-    }
 
+        public TEntity GetById(object id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TEntity GetById(string id)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
+
