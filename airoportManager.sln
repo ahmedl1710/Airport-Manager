@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AM.Application.Core", "AM.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AM.Infrastructure", "AM.Infrastructure\AM.Infrastructure.csproj", "{803E4131-E2A0-46D6-B1B7-9BCF3A114564}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AM.UI.WEB", "AM.UI.WEB\AM.UI.WEB.csproj", "{EA6F0051-97A0-41A7-821B-226785F82671}"
+	ProjectSection(ProjectDependencies) = postProject
+		{48A56B7A-A138-4A15-A7E7-32E6204E7A50} = {48A56B7A-A138-4A15-A7E7-32E6204E7A50}
+		{803E4131-E2A0-46D6-B1B7-9BCF3A114564} = {803E4131-E2A0-46D6-B1B7-9BCF3A114564}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +33,10 @@ Global
 		{803E4131-E2A0-46D6-B1B7-9BCF3A114564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{803E4131-E2A0-46D6-B1B7-9BCF3A114564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{803E4131-E2A0-46D6-B1B7-9BCF3A114564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA6F0051-97A0-41A7-821B-226785F82671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA6F0051-97A0-41A7-821B-226785F82671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA6F0051-97A0-41A7-821B-226785F82671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA6F0051-97A0-41A7-821B-226785F82671}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

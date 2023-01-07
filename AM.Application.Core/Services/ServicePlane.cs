@@ -1,78 +1,49 @@
 ﻿using AM.Application.Core.Domain;
 using AM.Application.Core.Interfaces;
 using AM.ApplicationCore.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+
 
 namespace AM.ApplicationCore.Services
 {
     public class ServicePlane : Service<Plane>, IServicePlane
     {
-        public List<Plane> Planes => GetAll().ToList();
-        public ServicePlane (IUnitOfWork unitofwork) : base(unitofwork)
+
+        public ServicePlane(IUnitOfWork unitOfWork) : base(unitOfWork)
         {
-           
+
         }
 
-        public IEnumerable<Plane> GetAll()
+        public bool IsAvailablePlane(Flight flight, int n)
         {
-            throw new NotImplementedException();
+            int capacity = Get(p => p.flights.Contains(flight) == true).Capacity;
+            int nbPassengers = flight.tickets.Count();
+            //return ;
+            return capacity >= (nbPassengers + n);
         }
 
-        public Plane GetById(params object[] keyValues)
+        public void DeletePlanes()
         {
-            throw new NotImplementedException();
+            foreach (var plane in GetAll().Where(p => (DateTime.Now - p.ManufactureDate).TotalDays > 365 * 10).ToList())
+            {
+                Delete(plane);
+                Commit();
+            }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*private IUnitOfWork unitOfWork;
-        private IGenericRepository<Plane> genericRepository;
-        /*public ServicePlane(IGenericRepository<Plane> genericRepository)
+        public IList<IGrouping<int, Flight>> GetFlights(int n)
         {
-            this.genericRepository = genericRepository;
-        }
-        public ServicePlane(IUnitOfWork unitOfWork)
-        {
-            this.unitOfWork = unitOfWork;
+            return GetAll().OrderByDescending(p => p.planeId).Take(n).SelectMany(p => p.flights).GroupBy(f => f.Plane.planeId).ToList();
         }
 
-        public void Add(Plane plane)
+        public IList<Passenger> GetPassengers(Plane plane)
         {
-            unitOfWork.Repository<Plane>().Add(plane);
+            return GetById(plane.planeId).flights.SelectMany(f => f.tickets.Select(t => t.passenger)).ToList();
         }
 
-        public IList<Plane> GetAll()
+        public int GetFlightNbre(Plane plane)
         {
-            return unitOfWork.Repository<Plane>().GetAll().ToList();
+            return GetById(plane.planeId).flights.Count();
         }
-
-        public void Remove(Plane plane)
-        {
-            unitOfWork.Repository<Plane>().Delete(plane);
-        }
-
-        public void Update(Plane plane)
-        {
-            unitOfWork.Repository<Plane>().Update(plane);
-        }*/
     }
 }

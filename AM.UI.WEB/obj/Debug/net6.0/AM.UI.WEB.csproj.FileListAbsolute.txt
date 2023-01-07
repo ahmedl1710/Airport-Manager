@@ -1,0 +1,8 @@
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.csproj.AssemblyReference.cache
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.AssemblyInfoInputs.cache
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.AssemblyInfo.cs
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.csproj.CoreCompileInputs.cache
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.RazorAssemblyInfo.cache
+C:\Users\amarz\source\repos\airoportManager\AM.UI.WEB\obj\Debug\net6.0\AM.UI.WEB.RazorAssemblyInfo.cs

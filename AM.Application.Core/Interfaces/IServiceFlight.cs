@@ -11,16 +11,16 @@ namespace AM.Application.Core.Interfaces
     public interface IServiceFlight: IService<Flight>   
     {
 
-        public List<Flight> GetFlightDates(String destination);
+        List<DateTime> GetFlightDates(string destination);
+        void GetFlights(string filterType, string filterValue);
+        void ShowFlightDetails(Plane plane);
+        int ProgrammedFlightNumber(DateTime startDate);
+        double DurationAverage(string destination);
+        IEnumerable<Flight> OrderedDurationFlights();
+        IEnumerable<String> SeniorTravellers(Flight f);
+        IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights();
 
-        public void GetFlights(String filterType, String value);
-        public int ProgrammedFlightNumber(DateTime startDate);
-        public void ShowFlightDetails(Plane p);
-        public int ProgrammedFlightNumber2(DateTime date);
-        public Double DurationAverage(String destination);
-        public List<Flight> OrderedDurationFLights();
-        public List<Traveller> SeniorTravellers(Flight flight);
-        public void DestinationGroupedFlights();
-       
+        List<Flight> GetFlightByDate(DateTime DateDepart);
+
     }
 }
